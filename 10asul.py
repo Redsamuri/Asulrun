@@ -144,12 +144,12 @@ helpMessage ="""||=====  F O R   U S E R  =====||
 
                ✯==== Creator ====✯
 	
-  Http://line.me/ti/p/~toon.38
+  Http://line.me/ti/p/~samuri5
 
                     
 """
 
-Thaihelp ="""\n
+ThaihelpMessage ="""
     ===✒️ ชุดคำสั่งAsul Bot ✒️ ===
 ||✒️ คท  - ส่งคท.ตัวเอง(Me)
 ||✒️ ไอดี  - ส่งMidตัวเอง
@@ -213,9 +213,9 @@ Thaihelp ="""\n
 ||✯ [Staff add/remove @]	   
 ||======= สำหรับแอดมิน =======||
 
-✯★Creator By ═ह वतेु১तेั७ழণ১ह═★✯
+Creator By ✯★ŔèďBøť★✯
 
- Http://line.me/ti/p/~toon.38
+ Http://line.me/ti/p/~samuri5
 
 """
 helo=""
@@ -232,10 +232,10 @@ k2mid = k2.getProfile().mid
 k3mid = k3.getProfile().mid
 k4mid = k4.getProfile().mid
 k5mid = k5.getProfile().mid
-Bots = [mid,kimid,ki2mid,ki3mid,ki4mid,ki5mid,k1mid,k2mid,k3mid,k4mid,k5mid,"u5d777f646c37180c939be97aa5097096"]
+Bots = [mid,kimid,ki2mid,ki3mid,ki4mid,ki5mid,k1mid,k2mid,k3mid,k4mid,k5mid,"mid"]
 bot1 = cl.getProfile().mid
-admsa = "u5d777f646c37180c939be97aa5097096"
-admin = "u5d777f646c37180c939be97aa5097096"
+admsa = "mid"
+admin = "mid"
 
 wait = {
     'contact':False,
@@ -244,9 +244,9 @@ wait = {
     'leaveRoom':True,
     'timeline':False,
     'autoAdd':True,
-    'message':"selt bot by\n┅═हवतेु১तेั७ழণ১ह═ \nhttp://line.me/ti/p/~toon.38",
+    'message':"selt bot by\n✯★ŔèďBøť★✯\nhttp://line.me/ti/p/~samuri5",
     "lang":"JP",
-    "comment":"Auto Like By \n┅═ह वतेु১तेั७ழণ১ह═┅",
+    "comment":"Auto Like By \n✯★ŔèďBøť★✯",
     "commentOn":False,
     "likeOn":False,
     "commentBlack":{},
@@ -378,11 +378,11 @@ def bot(op):
         if op.type == 24:
             if wait["leaveRoom"] == True:
                 cl.leaveRoom(op.param1)
-        if op.type == 26:
+        if op.type == 25:
             msg = op.message
             if msg.toType == 0:
                 msg.to = msg.from_
-                if msg.from_ == "u5d777f646c37180c939be97aa5097096":
+                if msg.from_ == admin:
                     if "join:" in msg.text:
                         list_ = msg.text.split(":")
                         try:
@@ -395,25 +395,25 @@ def bot(op):
             if msg.toType == 1:
                 if wait["leaveRoom"] == True:
                     cl.leaveRoom(msg.to)
-# ----------------- NOTIFED MEMBER OUT GROUP
-#        if op.type == 15:
-#            if op.param2 in bot1:
-#                return
-#            cl.sendText(op.param1,"ไปซะละ ลาก่อย\n(*´･ω･*)\nSelfbot by\n┅═ह वतेु১तेั७ழণ১ह═┅")
-#            print "MEMBER HAS LEFT THE GROUP"
-#------------------ KICK OUT FORM GROUP
-#        if op.type == 19:
-#            if op.param2 in Bots:
-#                return
-#            cl.sendText(op.param1,cl.getContact(op.param2).displayName + " ซัดเต็มข้อเลยครับ ท่านผู้ชม")
-#            print "MEMBER KICK OUT FORM GROUP"
-# ----------------- NOTIFED MEMBER JOIN GROUP
-#        if op.type == 17:
-#            if op.param2 in bot1:
-#                return
-#            ginfo = cl.getGroup(op.param1)
-#            cl.sendText(op.param1, "ยินดีต้อนรับ 😊" + cl.getContact(op.param2).displayName + " สู่กลุ่ม " + "👉" + str(ginfo.name) + "👈")
-#            print "MEMBER HAS JOIN THE GROUP"
+ ----------------- NOTIFED MEMBER OUT GROUP
+        if op.type == 15:
+            if op.param2 in bot1:
+                return
+            cl.sendText(op.param1,"ไปซะละ ลาก่อนนะ😭😭\n(*´･ω･*)\nSelfbot by\n✯★ŔèďBøť★✯")
+            print "MEMBER HAS LEFT THE GROUP"
+------------------ KICK OUT FORM GROUP
+        if op.type == 19:
+            if op.param2 in Bots:
+                return
+            cl.sendText(op.param1,cl.getContact(op.param2).displayName + " ซัดเต็มข้อเลยครับ ท่านผู้ชม คือโหดแท้วะ")
+            print "MEMBER KICK OUT FORM GROUP"
+ ----------------- NOTIFED MEMBER JOIN GROUP
+        if op.type == 17:
+            if op.param2 in bot1:
+                return
+            ginfo = cl.getGroup(op.param1)
+            cl.sendText(op.param1, "ยินดีต้อนรับ 😊" + cl.getContact(op.param2).displayName + " สู่กลุ่ม " + "👉" + str(ginfo.name) + "👈" + "นะคร๊าฟ😘😘")
+            print "MEMBER HAS JOIN THE GROUP"
             if msg.contentType == 16:
                 url = msg.contentMetadata["postEndUrl"]
                 cl.like(url[25:58], url[66:], likeType=1001)
@@ -519,7 +519,7 @@ def bot(op):
                     cl.sendText(msg.to,helpMessage)
             elif msg.text.lower()  == 'คำสั่ง':
                 if wait["lang"] == "JP":
-                    cl.sendText(msg.to,Thaihelp)
+                    cl.sendText(msg.to,ThaihelpMessage)
                 else:
                     cl.sendText(msg.to,Thaihelp)
             elif msg.text in ["Mybot","คิกเกอร์"]:
