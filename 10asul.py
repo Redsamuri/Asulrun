@@ -395,19 +395,19 @@ def bot(op):
             if msg.toType == 1:
                 if wait["leaveRoom"] == True:
                     cl.leaveRoom(msg.to)
- ----------------- NOTIFED MEMBER OUT GROUP
+ #----------------- NOTIFED MEMBER OUT GROUP
         if op.type == 15:
             if op.param2 in bot1:
                 return
             cl.sendText(op.param1,"ไปซะละ ลาก่อนนะ😭😭\n(*´･ω･*)\nSelfbot by\n✯★ŔèďBøť★✯")
             print "MEMBER HAS LEFT THE GROUP"
------------------- KICK OUT FORM GROUP
+#------------------ KICK OUT FORM GROUP
         if op.type == 19:
             if op.param2 in Bots:
                 return
             cl.sendText(op.param1,cl.getContact(op.param2).displayName + " ซัดเต็มข้อเลยครับ ท่านผู้ชม คือโหดแท้วะ")
             print "MEMBER KICK OUT FORM GROUP"
- ----------------- NOTIFED MEMBER JOIN GROUP
+ #----------------- NOTIFED MEMBER JOIN GROUP
         if op.type == 17:
             if op.param2 in bot1:
                 return
