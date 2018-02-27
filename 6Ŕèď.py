@@ -374,10 +374,10 @@ def bot(op):
 					ki.kickoutFromGroup(op.param1,[op.param2])
 					kk.kickoutFromGroup(op.param1,[op.param2])
 					ks.kickoutFromGroup(op.param1,[op.param2])
-		if op.type == 26:
+		if op.type == 25:
 			if mid in op.param3:
 				wait["blacklist"][op.param2] == True
-		if op.type == 26:
+		if op.type == 25:
 			if mid in op.param3:
 				if wait["blacklist"] == True:
 					cl.kickoutFromGroup(op.param1,[op.param2])
