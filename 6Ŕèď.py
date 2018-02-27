@@ -1,36 +1,36 @@
 # -*- coding: utf-8 -*-
 
-import LINETCR
-from LINETCR.lib.curve.ttypes import *
+import ASUL
+from ASUL.lib.curve.ttypes import *
 from io import StringIO
 from datetime import datetime
 import time,random,sys,json,codecs,threading,glob,sys
 import re,string,os
 import os.path,sys,urllib,shutil,subprocess,pickle
 
-cl = LINETCR.LINE()
+cl = ASUL.LINE()
 cl.login(token="Eqvca7woPuahgDEufxi6.MC3I4QsKSrV9tmqyKt6jHG.mXdGubjx1GmP8vVoXICWUBNqerHzfOhQ6qr9la7x9Hw=") 
 cl.loginResult()
 
-ki = LINETCR.LINE()
+ki = ASUL.LINE()
 ki.login(token="Eqvca7woPuahgDEufxi6.MC3I4QsKSrV9tmqyKt6jHG.mXdGubjx1GmP8vVoXICWUBNqerHzfOhQ6qr9la7x9Hw=")
 ki.loginResult()
 
-kk = LINETCR.LINE()
+kk = ASUL.LINE()
 kk.login(token="Eqvca7woPuahgDEufxi6.MC3I4QsKSrV9tmqyKt6jHG.mXdGubjx1GmP8vVoXICWUBNqerHzfOhQ6qr9la7x9Hw=")
 kk.loginResult()
 
-#ks = LINETCR.LINE()
-#ks.login(token="EpUleAc6mttjaot8yjN9.gU3VI4Ik4qJzA6Y8uftMEq.tGPw6UMmnqxkzfS+M4WWOrFvduyrTnDSJy+XgNPyQIg=")
-#ks.loginResult()
+ks = ASUL.LINE()
+ks.login(token="EpUleAc6mttjaot8yjN9.gU3VI4Ik4qJzA6Y8uftMEq.tGPw6UMmnqxkzfS+M4WWOrFvduyrTnDSJy+XgNPyQIg=")
+ks.loginResult()
 
-#kc = LINETCR.LINE()
-#kc.login(token="EpWwHwz9qSQho3SvU24d.ggx7QWxQIfYNVuGEW1YAhq.JCdpDyEWzjZVh/xwAuOFcsFnsiorGVo/WjZo/4VjeEE=")
-#kc.loginResult()
+kc = ASUL.LINE()
+kc.login(token="EpWwHwz9qSQho3SvU24d.ggx7QWxQIfYNVuGEW1YAhq.JCdpDyEWzjZVh/xwAuOFcsFnsiorGVo/WjZo/4VjeEE=")
+kc.loginResult()
 
-#ka = LINETCR.LINE()
-#ka.login(token="Epz94CdlIVmDSbjAvOP7.zwSmQzsHYBrI/F629A4XDW.f12RzPhI/3gpGitSypN2A+TDS4py3pOnMU8tNjy/zL8=")
-#ka.loginResult()
+ka = ASUL.LINE()
+ka.login(token="Epz94CdlIVmDSbjAvOP7.zwSmQzsHYBrI/F629A4XDW.f12RzPhI/3gpGitSypN2A+TDS4py3pOnMU8tNjy/zL8=")
+ka.loginResult()
 
 cl
 
@@ -40,9 +40,7 @@ with open('profileSave.pkl') as f:
 print "login success"
 reload(sys)
 sys.setdefaultencoding('utf-8')
-helpMessage ="""☬̫̫A̫̫R̫̫T̫̫H̫̫U̫̫R̫̫☬̫ SELF BOT
-─┅═✥ᵀᴴᴬᴵᴸᴬᴺᴰ✥═┅─
-    [ᴛᴇᴀᴍ ᴛᴇ̲̅s̲̅ᴛ ʙᴏᴛ]
+helpMessage ="""RED SELF BOT
 ╔══════════════════
 ╠❂➣[Id]
 ╠❂➣[Mid]
@@ -90,7 +88,7 @@ helpMessage ="""☬̫̫A̫̫R̫̫T̫̫H̫̫U̫̫R̫̫☬̫ SELF BOT
 ╠❂➣[Setcheck]
 ╠❂➣[เตะ"@tag]]
 ╠══════════════════
-║─┅═✥(sᴇᴛ)ᴄᴏᴍᴍᴀɴᴅ✥═┅─
+║─┅═✥(RED)ᴄᴏᴍᴍᴀɴᴅ✥═┅─
 ╠══════════════════
 ╠❂➣[Contact: on/off] 
 ╠❂➣[Auto join: on/off] 
@@ -115,6 +113,7 @@ helpMessage ="""☬̫̫A̫̫R̫̫T̫̫H̫̫U̫̫R̫̫☬̫ SELF BOT
 ╠❂➣[Gn:"name"]:
 ╠❂➣[ปล @tag]:
 ╠❂➣[มองบน]
+╠❂➣[ห้องว่าง]
 
 """
 helpMessage2 ="""•─ ͜͡ᴛᴇᴀᴍ ᴛᴇsᴛ ʙᴏᴛ͜͡ ─•
@@ -1237,7 +1236,7 @@ def bot(op):
                     msg.text = txt
                     msg.contentMetadata = {u'MENTION':json.dumps({"MENTIONEES":d})}
                     cl.sendMessage(msg) 
-            elif "หอยหลอด" in msg.text:
+            elif "ห้องว่าง" in msg.text:
                   X = cl.getGroup(msg.to)                    
                   X.preventJoinByTicket = False
                   cl.updateGroup(X)
