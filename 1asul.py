@@ -11,64 +11,23 @@ from io import StringIO
 from threading import Thread
 from gtts import gTTS
 from googletrans import Translator
-# https://kaijento.github.io/2017/05/19/web-scraping-youtube.com/
 import time,random,sys,json,codecs,threading,glob,requests,urllib
 
 cl = LINETCR.LINE()
 cl.login(token=qr().get())
 cl.loginResult()
 
-#cl = LINETCR.LINE()
-#cl.login(qr=True)
-#cl.login(token="ErFtmK6Nu1oVdGjsIEM8.N4wao97xQ7P7d14r+M37/a.Mt0yyRcvh3V4e8fa84dDFUIUBqP0NCi3KMmGZWR423M=")
-#cl.loginResult()
 
-#ki = ASUL.LINE()
-#ki.login(token="Ep7L90ylo6NUUlSBP538.wZxjCuYJwwfJnE+TIiu3Qa.jlSpzNgLTjmWrU9ZjH0rG36lW8Gu+s9/D59hRIEEmL8=")
-#ki.loginResult()
+ki = LINETCR.LINE()
+ki.login(token=qr().get())
+ki.loginResult()
 
-#ki2 = ASUL.LINE()
-#ki2.login(token="Ep8C6JKfXIngHwbonFu7.VLk4KX7UlHwHTOK3FJ5wnW.sNWlVYnDxRza3DORTtleim+m4/a5+E7hS8CbO827qz8=")
-#ki2.loginResult()
 
-#ki3 = ASUL.LINE()
-#ki3.login(token="EpfuRnOrHCQgMwsPKoA6.Lkg8ohUsFOz1yZrKJtfpHG.6rKd3R37b3dtNeyfmDu82e7CADPeELk3x7J7DofKZzk=")
-#ki3.loginResult()
+ki2 = LINETCR.LINE()
+ki2.login(token=qr().get())
+ki2.loginResult()
 
-#ki4 = ASUL.LINE()
-#ki4.login(token="EpPCSo9WIJo7fDyOysD9.th5xFRYfLrNmTFAuPc9Aoq.3AQ2YGBe1vcE/3D7EcnGx5MwHbvzPDqAQFwwHa2c4Cc=")
-#ki4.loginResult()
 
-#ki5 = ASUL.LINE()
-#ki5.login(token="EpPxPwn4x7ZmIjwHoSw9.gU3VI4Ik4qJzA6Y8uftMEq.kPR1/LP9T4dKFoAs49ftkNRaWUs65mg5iwcFrfXsi6k=")
-#ki5.loginResult()
-
-#k1 = ASUL.LINE()
-#kt.login(qr=True)
-#k1.login(token="EplAwyYtXX1dnzMJquRd.ggx7QWxQIfYNVuGEW1YAhq.wwYdYVPCjyUO/Yd3pq0QQUhc47H7fMP/8BypASs6bOM=")
-#k1.loginResult()
-
-#k2 = ASUL.LINE()
-#k2.login(qr=True)
-#k2.login(token="EpaQASbmm9EvjtGfF7W7.zwSmQzsHYBrI/F629A4XDW.ffnWauIeVaCUSuyCjwL02bLaW1hUpB7jc6WCjBCTUqY=")
-#k2.loginResult()
-
-#k3 = ASUL.LINE()
-#ki.login(qr=True)
-#k3.login(token="Ep45ilmx8Y5gNOOKL6d3.rQbq68XMQqTh/UyLzuFmuW.rK9BZM+FfpA8ArAUIZqqEeEJlMfjKIp/otzDAQpcwSc=")
-#k3.loginResult()
-
-#k4 = ASUL.LINE()
-#k4.login(qr=True)
-#k4.login(token="EpPCSo9WIJo7fDyOysD9.th5xFRYfLrNmTFAuPc9Aoq.3AQ2YGBe1vcE/3D7EcnGx5MwHbvzPDqAQFwwHa2c4Cc=")
-#k4.loginResult()
-
-#k5 = ASUL.LINE()
-#k5.login(qr=True)
-#k5.login(token="EpwCQRvOekGtQrwBKyhf.oNn7JCCtxEcC62DbXg1WNW.WpwcNGD9SnTmm7JhwZv01R2h+mocy28tgkzkK0f5XwY=")
-#k5.loginResult()
-
-#ki6 = LINTCR.LINE()
 
 AsulLogged = False
 
@@ -228,16 +187,8 @@ helo=""
 
 KAC=[cl]
 mid = cl.getProfile().mid
-#kimid = ki.getProfile().mid
-#ki2mid = ki2.getProfile().mid
-#ki3mid = ki3.getProfile().mid
-#ki4mid = ki4.getProfile().mid
-#ki5mid = ki5.getProfile().mid
-#k1mid = k1.getProfile().mid
-#k2mid = k2.getProfile().mid
-#k3mid = k3.getProfile().mid
-#k4mid = k4.getProfile().mid
-#k5mid = k5.getProfile().mid
+kimid = ki.getProfile().mid
+ki2mid = ki2.getProfile().mid
 Bots = [mid]
 bot1 = cl.getProfile().mid
 admsa = [mid]
@@ -299,11 +250,11 @@ mybackup.displayName = contact.displayName
 mybackup.statusMessage = contact.statusMessage
 mybackup.pictureStatus = contact.pictureStatus
 
-#contact = ki.getProfile()
-#backup = ki.getProfile()
-#backup.displayName = contact.displayName
-#backup.statusMessage = contact.statusMessage
-#backup.pictureStatus = contact.pictureStatus
+contact = ki.getProfile()
+backup = ki.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
 
 user1 = mid
 user2 = ""
@@ -535,30 +486,6 @@ def bot(op):
                 msg.contentType = 13
                 msg.contentMetadata = {'mid': ki2mid}
                 ki2.sendMessage(msg) 
-                msg.contentType = 13
-                msg.contentMetadata = {'mid': ki3mid}
-                ki3.sendMessage(msg) 
-                msg.contentType = 13
-                msg.contentMetadata = {'mid': ki4mid}
-                ki4.sendMessage(msg)
-                msg.contentType = 13
-                msg.contentMetadata = {'mid': ki5mid}
-                ki5.sendMessage(msg) 
-                msg.contentType = 13
-                msg.contentMetadata = {'mid': k1mid}
-                k1.sendMessage(msg)
-                msg.contentType = 13
-                msg.contentMetadata = {'mid': k2mid}
-                k2.sendMessage(msg)
-                msg.contentType = 13
-                msg.contentMetadata = {'mid': k3mid}
-                k3.sendMessage(msg)
-                msg.contentType = 13
-                msg.contentMetadata = {'mid': k4mid}
-                k4.sendMessage(msg)
-                msg.contentType = 13
-                msg.contentMetadata = {'mid': k5mid}
-                k5.sendMessage(msg)
             elif "As1" == msg.text:
                 msg.contentType = 13
                 msg.contentMetadata = {'mid': kimid}
@@ -567,75 +494,6 @@ def bot(op):
                 msg.contentType = 13
                 msg.contentMetadata = {'mid': ki2mid}
                 ki2.sendMessage(msg)
-            elif "As3" == msg.text:
-                msg.contentType = 13
-                msg.contentMetadata = {'mid': ki3mid}
-                ki3.sendMessage(msg)
-            elif "As4" == msg.text:
-                msg.contentType = 13
-                msg.contentMetadata = {'mid': ki4mid}
-                ki4.sendMessage(msg)
-            elif "As5" == msg.text:
-                msg.contentType = 13
-                msg.contentMetadata = {'mid': ki5mid}
-                ki5.sendMessage(msg)
-            elif "As6" == msg.text:
-                msg.contentType = 13
-                msg.contentMetadata = {'mid': k1mid}
-                k1.sendMessage(msg)
-            elif "As7" == msg.text:
-                msg.contentType = 13
-                msg.contentMetadata = {'mid': k2mid}
-                k2.sendMessage(msg)
-            elif "As8" == msg.text:
-                msg.contentType = 13
-                msg.contentMetadata = {'mid': k3mid}
-                k3.sendMessage(msg)
-            elif "As9" == msg.text:
-                msg.contentType = 13
-                msg.contentMetadata = {'mid': k4mid}
-                k4.sendMessage(msg)
-            elif "As10" == msg.text:
-                msg.contentType = 13
-                msg.contentMetadata = {'mid': k5mid}
-                k5.sendMessage(msg)
-            elif msg.text in ["Bot1 Gift","1 gift"]:
-                msg.contentType = 9
-                msg.contentMetadata={'PRDID': '3b92ccf5-54d3-4765-848f-c9ffdc1da020',
-                                    'PRDTYPE': 'THEME',
-                                    'MSGTPL': '2'}
-                msg.text = None
-                ki.sendMessage(msg)
-            elif msg.text in ["Gift","gift"]:
-                msg.contentType = 9
-                msg.contentMetadata={'PRDID': '3b92ccf5-54d3-4765-848f-c9ffdc1da020',
-                                    'PRDTYPE': 'THEME',
-                                    'MSGTPL': '3'}
-                msg.text = None
-                cl.sendMessage(msg)
-
-            elif msg.text in ["Bot2 Gift","2 gift"]:
-                msg.contentType = 9
-                msg.contentMetadata={'PRDID': '3b92ccf5-54d3-4765-848f-c9ffdc1da020',
-                                    'PRDTYPE': 'THEME',
-                                    'MSGTPL': '3'}
-                msg.text = None
-                ki2.sendMessage(msg)
-
-            elif msg.text in ["Bot3 Gift","3 gift"]:
-                msg.contentType = 9
-                msg.contentMetadata={'PRDID': '3b92ccf5-54d3-4765-848f-c9ffdc1da020',
-                                    'PRDTYPE': 'THEME',
-                                    'MSGTPL': '4'}
-                msg.text = None
-                ki3.sendMessage(msg)
-            elif msg.text in ["Bot4 Gift","4 gift"]:
-                msg.contentType = 9
-                msg.contentMetadata={'PRDID': '3b92ccf5-54d3-4765-848f-c9ffdc1da020',
-                                    'PRDTYPE': 'THEME',
-                                    'MSGTPL': '5'}
-                msg.text = None
-                ki4.sendMessage(msg)
 
             elif msg.text in ["Cancel","cancel","ยก","ยกเชิญ"]:
               if msg.from_ in admin:
@@ -662,32 +520,9 @@ def bot(op):
                 ki.sendText(msg.to,kimid)
             elif "2 mid" == msg.text:
                 ki2.sendText(msg.to,ki2mid)
-            elif "3 mid" == msg.text:
-                ki3.sendText(msg.to,ki3mid)
-            elif "4 mid" == msg.text:
-                ki4.sendText(msg.to,ki4mid)
-            elif "5 mid" == msg.text:
-                ki5.sendText(msg.to,ki5mid)
-            elif "6 mid" == msg.text:
-                k1.sendText(msg.to,k1mid)
-            elif "7 mid" == msg.text:
-                k2.sendText(msg.to,k2mid)
-            elif "8 mid" == msg.text:
-                k3.sendText(msg.to,k3mid)
-            elif "9 mid" == msg.text:
-                k4.sendText(msg.to,k4mid)
-            elif "10 mid" == msg.text:
-                k5.sendText(msg.to,k5mid)
             elif "All mid" == msg.text:
                 ki.sendText(msg.to,kimid)
                 ki2.sendText(msg.to,ki2mid)
-                ki3.sendText(msg.to,ki3mid)
-                ki4.sendText(msg.to,ki4mid)
-                ki5.sendText(msg.to,ki5mid)
-                k1.sendText(msg.to,k1mid)
-                k2.sendText(msg.to,k2mid)
-                k3.sendText(msg.to,k3mid)
-                k4.sendText(msg.to,k4mid)
             elif "Timeline: " in msg.text:
                 tl_text = msg.text.replace("Timeline: ","")
                 cl.sendText(msg.to,"line://home/post?userMid="+mid+"&postId="+cl.new_post(tl_text)["result"]["post"]["postInfo"]["postId"])
@@ -701,38 +536,7 @@ def bot(op):
                     profile = ki2.getProfile()
                     profile.displayName = string
                     ki2.updateProfile(profile)
-                if len(string.decode('utf-8')) <= 20:
-                    profile = ki3.getProfile()
-                    profile.displayName = string
-                    ki3.updateProfile(profile)
-                if len(string.decode('utf-8')) <= 20:
-                    profile = ki4.getProfile()
-                    profile.displayName = string
-                    ki4.updateProfile(profile)
-                if len(string.decode('utf-8')) <= 20:
-                    profile = ki5.getProfile()
-                    profile.displayName = string
-                    ki5.updateProfile(profile)
-                if len(string.decode('utf-8')) <= 20:
-                    profile = k1.getProfile()
-                    profile.displayName = string
-                    k1.updateProfile(profile)
-                if len(string.decode('utf-8')) <= 20:
-                    profile = k2.getProfile()
-                    profile.displayName = string
-                    k2.updateProfile(profile)
-                if len(string.decode('utf-8')) <= 20:
-                    profile = k3.getProfile()
-                    profile.displayName = string
-                    k3.updateProfile(profile)
-                if len(string.decode('utf-8')) <= 20:
-                    profile = k4.getProfile()
-                    profile.displayName = string
-                    k4.updateProfile(profile)
-                if len(string.decode('utf-8')) <= 20:
-                    profile = k5.getProfile()
-                    profile.displayName = string
-                    k5.updateProfile(profile)
+		
             elif "Allbio: " in msg.text:
                 string = msg.text.replace("Allbio: ","")
                 if len(string.decode('utf-8')) <= 500:
@@ -743,38 +547,6 @@ def bot(op):
                     profile = ki2.getProfile()
                     profile.statusMessage = string
                     ki2.updateProfile(profile)
-                if len(string.decode('utf-8')) <= 500:
-                    profile = ki3.getProfile()
-                    profile.statusMessage = string
-                    ki3.updateProfile(profile)
-                if len(string.decode('utf-8')) <= 500:
-                    profile = ki4.getProfile()
-                    profile.statusMessage = string
-                    ki4.updateProfile(profile)
-                if len(string.decode('utf-8')) <= 500:
-                    profile = ki5.getProfile()
-                    profile.statusMessage = string
-                    ki5.updateProfile(profile)
-                if len(string.decode('utf-8')) <= 500:
-                    profile = k1.getProfile()
-                    profile.statusMessage = string
-                    k1.updateProfile(profile)
-                if len(string.decode('utf-8')) <= 500:
-                    profile = k2.getProfile()
-                    profile.statusMessage = string
-                    k2.updateProfile(profile)
-                if len(string.decode('utf-8')) <= 500:
-                    profile = k3.getProfile()
-                    profile.statusMessage = string
-                    k3.updateProfile(profile)
-                if len(string.decode('utf-8')) <= 500:
-                    profile = k4.getProfile()
-                    profile.statusMessage = string
-                    k4.updateProfile(profile)
-                if len(string.decode('utf-8')) <= 500:
-                    profile = k5.getProfile()
-                    profile.statusMessage = string
-                    k5.updateProfile(profile)
 
 #---------------------------------------------------------
             elif "1pro: " in msg.text:
@@ -792,70 +564,6 @@ def bot(op):
                     profile.displayName = string
                     ki2.updateProfile(profile)
                     ki2.sendText(msg.to,"􀜁􀇔􏿿Update Names👉" + string + "👈")
-#--------------------------------------------------------
-            elif "3pro: " in msg.text:
-                string = msg.text.replace("3pro: ","")
-                if len(string.decode('utf-8')) <= 20:
-                    profile = ki3.getProfile()
-                    profile.displayName = string
-                    ki3.updateProfile(profile)
-                    ki3.sendText(msg.to,"􀜁􀇔􏿿Update Names👉" + string + "👈")
-#--------------------------------------------------------
-            elif "4pro: " in msg.text:
-                string = msg.text.replace("4pro: ","")
-                if len(string.decode('utf-8')) <= 20:
-                    profile = ki4.getProfile()
-                    profile.displayName = string
-                    ki4.updateProfile(profile)
-                    ki4.sendText(msg.to,"􀜁􀇔􏿿Update Names👉" + string + "👈")
-#--------------------------------------------------------
-            elif "5pro: " in msg.text:
-                string = msg.text.replace("5pro: ","")
-                if len(string.decode('utf-8')) <= 20:
-                    profile = ki5.getProfile()
-                    profile.displayName = string
-                    ki5.updateProfile(profile)
-                    ki5.sendText(msg.to,"􀜁􀇔􏿿Update Names👉" + string + "👈")
-#--------------------------------------------------------
-            elif "6pro: " in msg.text:
-                string = msg.text.replace("10pro: ","")
-                if len(string.decode('utf-8')) <= 20:
-                    profile = k1.getProfile()
-                    profile.displayName = string
-                    k1.updateProfile(profile)
-                    k1.sendText(msg.to,"􀜁􀇔􏿿Update Names👉" + string + "👈")
-#--------------------------------------------------------
-            elif "7pro: " in msg.text:
-                string = msg.text.replace("11pro: ","")
-                if len(string.decode('utf-8')) <= 20:
-                    profile = k2.getProfile()
-                    profile.displayName = string
-                    k2.updateProfile(profile)
-                    k2.sendText(msg.to,"??􀇔􏿿Update Names👉" + string + "👈")
-#--------------------------------------------------------
-            elif "8pro: " in msg.text:
-                string = msg.text.replace("12pro: ","")
-                if len(string.decode('utf-8')) <= 20:
-                    profile = k3.getProfile()
-                    profile.displayName = string
-                    k3.updateProfile(profile)
-                    k3.sendText(msg.to,"􀜁􀇔􏿿Update Names👉" + string + "👈")
-#--------------------------------------------------------
-            elif "9pro: " in msg.text:
-                string = msg.text.replace("13pro: ","")
-                if len(string.decode('utf-8')) <= 20:
-                    profile = k4.getProfile()
-                    profile.displayName = string
-                    k4.updateProfile(profile)
-                    k4.sendText(msg.to,"􀜁􀇔􏿿Update Names👉" + string + "👈")
-#--------------------------------------------------------
-            elif "10pro: " in msg.text:
-                string = msg.text.replace("14pro: ","")
-                if len(string.decode('utf-8')) <= 20:
-                    profile = k5.getProfile()
-                    profile.displayName = string
-                    k5.updateProfile(profile)
-                    k5.sendText(msg.to,"􀜁􀇔􏿿Update Names👉" + string + "👈")
 #--------------------------------------------------------
             elif "Mid: " in msg.text:
                 mmid = msg.text.replace("Mid: ","")
@@ -1877,30 +1585,6 @@ def bot(op):
                 c = ki2.getAllContactIds()
                 for manusia in c:
                     ki2.sendText(manusia, (bctxt))
-                d = ki3.getAllContactIds()
-                for manusia in d:
-                    ki3.sendText(manusia, (bctxt))
-                e = ki4.getAllContactIds()
-                for manusia in e:
-                    ki4.sendText(manusia, (bctxt))
-                f = ki5.getAllContactIds()
-                for manusia in f:
-                    ki5.sendText(manusia, (bctxt))
-                k = k1.getAllContactIds()
-                for manusia in k:
-                    k1.sendText(manusia, (bctxt))
-                l = k2.getAllContactIds()
-                for manusia in l:
-                    k2.sendText(manusia, (bctxt))
-                m = k3.getAllContactIds()
-                for manusia in m:
-                    k3.sendText(manusia, (bctxt))
-                n = k4.getAllContactIds()
-                for manusia in n:
-                    k4.sendText(manusia, (bctxt))
-                o = k5.getAllContactIds()
-                for manusia in o:
-                    k5.sendText(manusia, (bctxt))
                 
             elif "Bc:grup " in msg.text:
                 bctxt = msg.text.replace("Bc:grup ", "")
@@ -1917,30 +1601,6 @@ def bot(op):
                 c = ki2.getGroupIdsJoined()
                 for manusia in c:
                     ki2.sendText(manusia, (bctxt))
-                d = ki3.getGroupIdsJoined()
-                for manusia in d:
-                    ki3.sendText(manusia, (bctxt))
-                e = ki4.getGroupIdsJoined()
-                for manusia in e:
-                    ki4.sendText(manusia, (bctxt))
-                f = ki5.getGroupIdsJoined()
-                for manusia in f:
-                    ki5.sendText(manusia, (bctxt))
-                k = k1.getGroupIdsJoined()
-                for manusia in k:
-                    k1.sendText(manusia, (bctxt))
-                l = k2.getGroupIdsJoined()
-                for manusia in l:
-                    k2.sendText(manusia, (bctxt))
-                m = k3.getGroupIdsJoined()
-                for manusia in m:
-                    k3.sendText(manusia, (bctxt))
-                n = k4.getGroupIdsJoined()
-                for manusia in n:
-                    k4.sendText(manusia, (bctxt))
-                o = k5.getGroupIdsJoined()
-                for manusia in o:
-                    k5.sendText(manusia, (bctxt))
 
             elif "Spam " in msg.text:
                 txt = msg.text.split(" ")
@@ -1977,16 +1637,41 @@ def bot(op):
                            Mids = [target for contact in thisgroup[0].members]
                            mi_d = Mids[:33]
                            cl.createGroup("RED SAMURI Group",mi_d)
+                           ki.createGroup("RED SAMURI Group",mi_d)
+                           ki2.createGroup("RED SAMURI Group",mi_d)
                            cl.createGroup("RED SAMURI Group",mi_d)
+                           ki.createGroup("RED SAMURI Group",mi_d)
+                           ki2.createGroup("RED SAMURI Group",mi_d)
                            cl.createGroup("RED SAMURI Group",mi_d)
+                           ki.createGroup("RED SAMURI Group",mi_d)
+                           ki2.createGroup("RED SAMURI Group",mi_d)
                            cl.createGroup("RED SAMURI Group",mi_d)
+                           ki.createGroup("RED SAMURI Groupp",mi_d)
+			   ki2.createGroup("RED SAMURI Groupp",mi_d)
+			   cl.createGroup("RED SAMURI Group",mi_d)
+                           ki.createGroup("RED SAMURI Group",mi_d)
+                           ki2.createGroup("RED SAMURI Group",mi_d)
                            cl.createGroup("RED SAMURI Group",mi_d)
+                           ki.createGroup("RED SAMURI Group",mi_d)
+                           ki2.createGroup("RED SAMURI Group",mi_d)
                            cl.createGroup("RED SAMURI Group",mi_d)
+                           ki.createGroup("RED SAMURI Group",mi_d)
+                           ki2.createGroup("RED SAMURI Group",mi_d)
                            cl.createGroup("RED SAMURI Group",mi_d)
+                           ki.createGroup("RED SAMURI Groupp",mi_d)
+			   ki2.createGroup("RED SAMURI Groupp",mi_d)
+			   cl.createGroup("RED SAMURI Group",mi_d)
+                           ki.createGroup("RED SAMURI Group",mi_d)
+                           ki2.createGroup("RED SAMURI Group",mi_d)
                            cl.createGroup("RED SAMURI Group",mi_d)
+                           ki.createGroup("RED SAMURI Group",mi_d)
+                           ki2.createGroup("RED SAMURI Group",mi_d)
                            cl.createGroup("RED SAMURI Group",mi_d)
+                           ki.createGroup("RED SAMURI Group",mi_d)
+                           ki2.createGroup("RED SAMURI Group",mi_d)
                            cl.createGroup("RED SAMURI Group",mi_d)
-                           cl.createGroup("RED SAMURI Groupp",mi_d)
+                           ki.createGroup("RED SAMURI Groupp",mi_d)
+			   ki2.createGroup("RED SAMURI Groupp",mi_d)
                            cl.sendText(msg.to,"เรียบร้อย")
                         except:
                             pass
@@ -2028,25 +1713,9 @@ def bot(op):
                 gid = cl.getGroupIdsJoined()
                 gid = ki.getGroupIdsJoined()
                 gid = ki2.getGroupIdsJoined()
-                gid = ki3.getGroupIdsJoined()
-                gid = ki4.getGroupIdsJoined()
-                gid = ki5.getGroupIdsJoined()
-                gid = k1.getGroupIdsJoined()
-                gid = k2.getGroupIdsJoined()
-                gid = k3.getGroupIdsJoined()
-                gid = k4.getGroupIdsJoined()
-                gid = k5.getGroupIdsJoined()
                 for i in gid:
                     ki.leaveGroup(i)
                     ki2.leaveGroup(i)
-                    ki3.leaveGroup(i)
-                    ki4.leaveGroup(i)
-                    ki5.leaveGroup(i)
-                    k1.leaveGroup(i)
-                    k2.leaveGroup(i)
-                    k3.leaveGroup(i)
-                    k4.leaveGroup(i)
-                    k5.leaveGroup(i)
                 if wait["lang"] == "JP":
                     cl.sendText(msg.to,"Bot Sudah Keluar Di semua grup")
                 else:
@@ -2224,56 +1893,8 @@ def bot(op):
                 for i in gs:
                     L += "[⭐] %s \n" % (ki2.getGroup(i).name + " | [ " + str(len (ki2.getGroup(i).members)) + " ]")
                 ki2.sendText(msg.to, L + "\nTotal Group : [ " + str(len(gs)) +" ]")
-            elif msg.text in ["S3glist"]:
-                gs = ki3.getGroupIdsJoined()
-                L = "☫『 Groups List 』☫\n"
-                for i in gs:
-                    L += "[⭐] %s \n" % (ki3.getGroup(i).name + " | [ " + str(len (ki3.getGroup(i).members)) + " ]")
-                ki3.sendText(msg.to, L + "\nTotal Group : [ " + str(len(gs)) +" ]")
-            elif msg.text in ["S4glist"]:
-                gs = ki4.getGroupIdsJoined()
-                L = "☫『 Groups List 』☫\n"
-                for i in gs:
-                    L += "[⭐] %s \n" % (ki4.getGroup(i).name + " | [ " + str(len (ki4.getGroup(i).members)) + " ]")
-                ki4.sendText(msg.to, L + "\nTotal Group : [ " + str(len(gs)) +" ]")
-            elif msg.text in ["S5glist"]:
-                gs = ki5.getGroupIdsJoined()
-                L = "☫『 Groups List 』☫\n"
-                for i in gs:
-                    L += "[⭐] %s \n" % (ki5.getGroup(i).name + " | [ " + str(len (ki5.getGroup(i).members)) + " ]")
-                ki5.sendText(msg.to, L + "\nTotal Group : [ " + str(len(gs)) +" ]")
-            elif msg.text in ["S10glist"]:
-                gs = k1.getGroupIdsJoined()
-                L = "☫『 Groups List 』☫\n"
-                for i in gs:
-                    L += "[⭐] %s \n" % (k1.getGroup(i).name + " | [ " + str(len (k1.getGroup(i).members)) + " ]")
-                k1.sendText(msg.to, L + "\nTotal Group : [ " + str(len(gs)) +" ]")
-            elif msg.text in ["S11glist"]:
-                gs = k2.getGroupIdsJoined()
-                L = "☫『 Groups List 』☫\n"
-                for i in gs:
-                    L += "[⭐] %s \n" % (k2.getGroup(i).name + " | [ " + str(len (k2.getGroup(i).members)) + " ]")
-                k2.sendText(msg.to, L + "\nTotal Group : [ " + str(len(gs)) +" ]")
-            elif msg.text in ["S12glist"]:
-                gs = k3.getGroupIdsJoined()
-                L = "☫『 Groups List 』☫\n"
-                for i in gs:
-                    L += "[⭐] %s \n" % (k3.getGroup(i).name + " | [ " + str(len (k3.getGroup(i).members)) + " ]")
-                k3.sendText(msg.to, L + "\nTotal Group : [ " + str(len(gs)) +" ]")
-            elif msg.text in ["S13glist"]:
-                gs = k4.getGroupIdsJoined()
-                L = "☫『 Groups List 』☫\n"
-                for i in gs:
-                    L += "[⭐] %s \n" % (k4.getGroup(i).name + " | [ " + str(len (k4.getGroup(i).members)) + " ]")
-                k4.sendText(msg.to, L + "\nTotal Group : [ " + str(len(gs)) +" ]")
-            elif msg.text in ["S14glist"]:
-                gs = k5.getGroupIdsJoined()
-                L = "☫『 Groups List 』☫\n"
-                for i in gs:
-                    L += "[⭐] %s \n" % (k5.getGroup(i).name + " | [ " + str(len (k5.getGroup(i).members)) + " ]")
-                k5.sendText(msg.to, L + "\nTotal Group : [ " + str(len(gs)) +" ]")
                     
-            elif msg.text == "Link bokep":
+            elif msg.text == "ลิ้งAV":
                     cl.sendText(msg.to,"nekopoi.host")
                     cl.sendText(msg.to,"sexvideobokep.com")
                     cl.sendText(msg.to,"memek.com")
@@ -2331,19 +1952,6 @@ def bot(op):
                 elapsed_time = time.time() - start
                 ki2.sendText(msg.to, "%sseconds" % (elapsed_time))
                 elapsed_time = time.time() - start
-                ki3.sendText(msg.to, "%sseconds" % (elapsed_time))
-                elapsed_time = time.time() - start
-                ki4.sendText(msg.to, "%sseconds" % (elapsed_time))
-                elapsed_time = time.time() - start
-                k1.sendText(msg.to, "%sseconds" % (elapsed_time))
-                elapsed_time = time.time() - start
-                k2.sendText(msg.to, "%sseconds" % (elapsed_time))
-                elapsed_time = time.time() - start
-                k3.sendText(msg.to, "%sseconds" % (elapsed_time))
-                elapsed_time = time.time() - start
-                k4.sendText(msg.to, "%sseconds" % (elapsed_time))
-                elapsed_time = time.time() - start
-                k5.sendText(msg.to, "%sseconds" % (elapsed_time))
             
             elif msg.text in ["Responsname","เชคชื่อ"]:
                 profile = ki.getProfile()
@@ -2354,28 +1962,6 @@ def bot(op):
                 ki2.sendText(msg.to, text + "รายงานตัว")
                 profile = ki3.getProfile()
                 text = profile.displayName
-                ki3.sendText(msg.to, text + "รายงานตัว")
-                profile = ki4.getProfile()
-                text = profile.displayName
-                ki4.sendText(msg.to, text + "รายงานตัว")
-                profile = ki5.getProfile()
-                text = profile.displayName
-                ki5.sendText(msg.to, text + "รายงานตัว")
-                profile = k1.getProfile()
-                text = profile.displayName
-                k1.sendText(msg.to, text + "รายงานตัว")
-                profile = k2.getProfile()
-                text = profile.displayName
-                k2.sendText(msg.to, text + "รายงานตัว")
-                profile = k3.getProfile()
-                text = profile.displayName
-                k3.sendText(msg.to, text + "รายงานตัว")
-                profile = k4.getProfile()
-                text = profile.displayName
-                k4.sendText(msg.to, text + "รายงานตัว")
-                profile = k5.getProfile()
-                text = profile.displayName
-                k5.sendText(msg.to, text + "รายงานตัว")
 
 #------------------------------------------------------------------	
             elif "Steal home @" in msg.text:            
@@ -2572,14 +2158,6 @@ def bot(op):
                             cl.kickoutFromGroup(msg.to,[jj])
                             ki.kickoutFromGroup(msg.to,[jj])
                             ki2.kickoutFromGroup(msg.to,[jj])
-                            ki3.kickoutFromGroup(msg.to,[jj])
-                            ki4.kickoutFromGroup(msg.to,[jj])
-                            ki5.kickoutFromGroup(msg.to,[jj])
-                            k1.kickoutFromGroup(msg.to,[jj])
-                            k2.kickoutFromGroup(msg.to,[jj])
-                            k3.kickoutFromGroup(msg.to,[jj])
-                            k4.kickoutFromGroup(msg.to,[jj])
-                            k5.kickoutFromGroup(msg.to,[jj])
                             print (msg.to,[jj])
                         except:
                             pass
@@ -2590,14 +2168,6 @@ def bot(op):
                     _name = msg.text.replace("Nuke","")
                     gs = ki.getGroup(msg.to)
                     gs = ki2.getGroup(msg.to)
-                    gs = ki3.getGroup(msg.to)
-                    gs = ki4.getGroup(msg.to)
-                    gs = ki5.getGroup(msg.to)
-                    gs = k1.getGroup(msg.to)
-                    gs = k2.getGroup(msg.to)
-                    gs = k3.getGroup(msg.to)
-                    gs = k4.getGroup(msg.to)
-                    gs = k5.getGroup(msg.to)
                     cl.sendText(msg.to,"ไอ้เสือเตรียมความพร้อม")
                     targets = []
                     for g in gs.members:
@@ -2610,7 +2180,7 @@ def bot(op):
                         for target in targets:
                           if not target in Bots:
                             try:
-                                klist=[k1,ki,ki2,ki3,ki4,ki5]
+                                klist=[ki,ki2]
                                 kicker=random.choice(klist)
                                 kicker.kickoutFromGroup(msg.to,[target])
                                 print (msg.to,[g.mid])
@@ -2633,22 +2203,6 @@ def bot(op):
                         time.sleep(0.001)
                         ki2.acceptGroupInvitationByTicket(msg.to,Ticket)
                         time.sleep(0.001)
-                        ki3.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        time.sleep(0.001)
-                        ki4.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        time.sleep(0.001)
-                        ki5.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        time.sleep(0.001)
-                        k1.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        time.sleep(0.001)
-                        #k2.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        #time.sleep(0.001)
-                        #k3.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        #time.sleep(0.001)
-                        #k4.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        #time.sleep(0.001)
-                        #k5.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        #time.sleep(0.001)
                         G = cl.getGroup(msg.to)
                         ginfo = cl.getGroup(msg.to)
                         G.preventJoinByTicket = True
@@ -2670,22 +2224,6 @@ def bot(op):
                         time.sleep(0.02)
                         ki2.acceptGroupInvitationByTicket(msg.to,Ticket)
                         time.sleep(0.02)
-                        ki3.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        time.sleep(0.02)
-                        ki4.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        time.sleep(0.02)
-                        ki5.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        time.sleep(0.02)
-                        k1.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        time.sleep(0.02)
-                        k2.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        time.sleep(0.02)
-                        k3.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        time.sleep(0.02)
-                        k4.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        time.sleep(0.02)
-                        k5.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        time.sleep(0.02)
                         G = cl.getGroup(msg.to)
                         G.preventJoinByTicket = True
                         ki.updateGroup(G)
@@ -2702,14 +2240,6 @@ def bot(op):
                         Ticket = cl.reissueGroupTicket(msg.to)
                         ki.acceptGroupInvitationByTicket(msg.to,Ticket)
                         ki2.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        ki3.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        ki4.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        ki5.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        k1.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        k2.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        k3.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        k4.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        k5.acceptGroupInvitationByTicket(msg.to,Ticket)
                         G = cl.getGroup(msg.to)
                         ginfo = cl.getGroup(msg.to)
                         G.preventJoinByTicket = True
@@ -2750,134 +2280,6 @@ def bot(op):
                         G.preventJoinByTicket(G)
                         ki2.updateGroup(G)
 #-----------------------------------------------
-            elif "3 in" in msg.text:
-                        G = cl.getGroup(msg.to)
-                        ginfo = cl.getGroup(msg.to)
-                        G.preventJoinByTicket = False
-                        cl.updateGroup(G)
-                        invsend = 0
-                        Ticket = cl.reissueGroupTicket(msg.to)
-                        ki3.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        G = cl.getGroup(msg.to)
-                        ginfo = cl.getGroup(msg.to)
-                        G.preventJoinByTicket = True
-                        ki2.updateGroup(G)
-                        print "kicker ok"
-                        G.preventJoinByTicket(G)
-                        ki2.updateGroup(G)
-#-----------------------------------------------
-            elif "4 in" in msg.text:
-                        G = cl.getGroup(msg.to)
-                        ginfo = cl.getGroup(msg.to)
-                        G.preventJoinByTicket = False
-                        cl.updateGroup(G)
-                        invsend = 0
-                        Ticket = cl.reissueGroupTicket(msg.to)
-                        ki4.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        G = cl.getGroup(msg.to)
-                        ginfo = cl.getGroup(msg.to)
-                        G.preventJoinByTicket = True
-                        ki3.updateGroup(G)
-                        print "kicker ok"
-                        G.preventJoinByTicket(G)
-                        ki3.updateGroup(G)
-#-----------------------------------------------
-            elif "5 in" in msg.text:
-                        G = cl.getGroup(msg.to)
-                        ginfo = cl.getGroup(msg.to)
-                        G.preventJoinByTicket = False
-                        cl.updateGroup(G)
-                        invsend = 0
-                        Ticket = cl.reissueGroupTicket(msg.to)
-                        ki5.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        G = cl.getGroup(msg.to)
-                        ginfo = cl.getGroup(msg.to)
-                        G.preventJoinByTicket = True
-                        ki5.updateGroup(G)
-                        print "kicker ok"
-                        G.preventJoinByTicket(G)
-                        ki5.updateGroup(G)
-#-----------------------------------------------
-            elif "6 in" in msg.text:
-                        G = cl.getGroup(msg.to)
-                        ginfo = cl.getGroup(msg.to)
-                        G.preventJoinByTicket = False
-                        cl.updateGroup(G)
-                        invsend = 0
-                        Ticket = cl.reissueGroupTicket(msg.to)
-                        k1.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        G = cl.getGroup(msg.to)
-                        ginfo = cl.getGroup(msg.to)
-                        G.preventJoinByTicket = True
-                        k1.updateGroup(G)
-                        print "kicker ok"
-                        G.preventJoinByTicket(G)
-                        k1.updateGroup(G)
-#-----------------------------------------------
-            elif "7 in" in msg.text:
-                        G = cl.getGroup(msg.to)
-                        ginfo = cl.getGroup(msg.to)
-                        G.preventJoinByTicket = False
-                        cl.updateGroup(G)
-                        invsend = 0
-                        Ticket = cl.reissueGroupTicket(msg.to)
-                        k2.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        G = cl.getGroup(msg.to)
-                        ginfo = cl.getGroup(msg.to)
-                        G.preventJoinByTicket = True
-                        k2.updateGroup(G)
-                        print "kicker ok"
-                        G.preventJoinByTicket(G)
-                        k2.updateGroup(G)
-#-----------------------------------------------
-            elif "8 in" in msg.text:
-                        G = cl.getGroup(msg.to)
-                        ginfo = cl.getGroup(msg.to)
-                        G.preventJoinByTicket = False
-                        cl.updateGroup(G)
-                        invsend = 0
-                        Ticket = cl.reissueGroupTicket(msg.to)
-                        k3.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        G = cl.getGroup(msg.to)
-                        ginfo = cl.getGroup(msg.to)
-                        G.preventJoinByTicket = True
-                        k3.updateGroup(G)
-                        print "kicker ok"
-                        G.preventJoinByTicket(G)
-                        k3.updateGroup(G)
-#-----------------------------------------------
-            elif "9 in" in msg.text:
-                        G = cl.getGroup(msg.to)
-                        ginfo = cl.getGroup(msg.to)
-                        G.preventJoinByTicket = False
-                        cl.updateGroup(G)
-                        invsend = 0
-                        Ticket = cl.reissueGroupTicket(msg.to)
-                        k4.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        G = cl.getGroup(msg.to)
-                        ginfo = cl.getGroup(msg.to)
-                        G.preventJoinByTicket = True
-                        k4.updateGroup(G)
-                        print "kicker ok"
-                        G.preventJoinByTicket(G)
-                        k4.updateGroup(G)
-#-----------------------------------------------
-            elif "10 in" in msg.text:
-                        G = cl.getGroup(msg.to)
-                        ginfo = cl.getGroup(msg.to)
-                        G.preventJoinByTicket = False
-                        cl.updateGroup(G)
-                        invsend = 0
-                        Ticket = cl.reissueGroupTicket(msg.to)
-                        k5.acceptGroupInvitationByTicket(msg.to,Ticket)
-                        G = cl.getGroup(msg.to)
-                        ginfo = cl.getGroup(msg.to)
-                        G.preventJoinByTicket = True
-                        k5.updateGroup(G)
-                        print "kicker ok"
-                        G.preventJoinByTicket(G)
-                        k5.updateGroup(G)
-#-----------------------------------------------
             elif msg.text in ["See you","Bye","กุเกลียดมึง","Sayonara"]:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
@@ -2885,14 +2287,6 @@ def bot(op):
                         cl.sendText(msg.to,"ไปก็ได้ บ๊ายบายยย😘 "  +  str(ginfo.name)  + "")
                         ki.leaveGroup(msg.to)
                         ki2.leaveGroup(msg.to)
-                        ki3.leaveGroup(msg.to)
-                        ki4.leaveGroup(msg.to)
-                        ki5.leaveGroup(msg.to)
-                        k1.leaveGroup(msg.to)
-                        k2.leaveGroup(msg.to)
-                        k3.leaveGroup(msg.to)
-                        k4.leaveGroup(msg.to)
-                        k5.leaveGroup(msg.to)
                     except:
                         pass
 #-----------------------------------------------
@@ -2909,70 +2303,6 @@ def bot(op):
                     ginfo = cl.getGroup(msg.to)
                     try:
                         ki2.leaveGroup(msg.to)
-                    except:
-                        pass
-#-----------------------------------------------
-            elif "3 bye" in msg.text:
-                if msg.toType == 2:
-                    ginfo = cl.getGroup(msg.to)
-                    try:
-                        ki3.leaveGroup(msg.to)
-                    except:
-                        pass
-#-----------------------------------------------
-            elif "4 bye" in msg.text:
-                if msg.toType == 2:
-                    ginfo = cl.getGroup(msg.to)
-                    try:
-                        ki4.leaveGroup(msg.to)
-                    except:
-                        pass
-#-----------------------------------------------
-            elif "5 bye" in msg.text:
-                if msg.toType == 2:
-                    ginfo = cl.getGroup(msg.to)
-                    try:
-                        ki5.leaveGroup(msg.to)
-                    except:
-                        pass
-#-----------------------------------------------
-            elif "6 bye" in msg.text:
-                if msg.toType == 2:
-                    ginfo = cl.getGroup(msg.to)
-                    try:
-                        k1.leaveGroup(msg.to)
-                    except:
-                        pass
-#-----------------------------------------------
-            elif "7 bye" in msg.text:
-                if msg.toType == 2:
-                    ginfo = cl.getGroup(msg.to)
-                    try:
-                        k2.leaveGroup(msg.to)
-                    except:
-                        pass
-#-----------------------------------------------
-            elif "8 bye" in msg.text:
-                if msg.toType == 2:
-                    ginfo = cl.getGroup(msg.to)
-                    try:
-                        k3.leaveGroup(msg.to)
-                    except:
-                        pass
-#-----------------------------------------------
-            elif "9 bye" in msg.text:
-                if msg.toType == 2:
-                    ginfo = cl.getGroup(msg.to)
-                    try:
-                        k4.leaveGroup(msg.to)
-                    except:
-                        pass
-#-----------------------------------------------
-            elif "10 bye" in msg.text:
-                if msg.toType == 2:
-                    ginfo = cl.getGroup(msg.to)
-                    try:
-                        k5.leaveGroup(msg.to)
                     except:
                         pass
 #-----------------------------------------------
@@ -2994,14 +2324,6 @@ def bot(op):
                         cl.acceptGroupInvitationByTicket(op.param1,Ticket)
                         ki.acceptGroupInvitationByTicket(op.param1,Ticket)
                         ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
                         G.preventJoinByTicket = True
                         cl.updateGroup(G)
                     else:
@@ -3015,14 +2337,6 @@ def bot(op):
                         cl.acceptGroupInvitationByTicket(op.param1,Ticket)
                         ki.acceptGroupInvitationByTicket(op.param1,Ticket)
                         ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
                         G.preventJoinByTicket = True
                         cl.updateGroup(G)
                         ki.updateGroup(G)
@@ -3039,14 +2353,6 @@ def bot(op):
                         cl.acceptGroupInvitationByTicket(op.param1,Ticket)
                         ki.acceptGroupInvitationByTicket(op.param1,Ticket)
                         ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
                         G.preventJoinByTicket = True
                         ki2.updateGroup(G)
                     else:
@@ -3060,14 +2366,6 @@ def bot(op):
                         cl.acceptGroupInvitationByTicket(op.param1,Ticket)
                         ki.acceptGroupInvitationByTicket(op.param1,Ticket)
                         ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
                         G.preventJoinByTicket = True
                         ki.updateGroup(G)
 
@@ -3081,14 +2379,6 @@ def bot(op):
                         cl.acceptGroupInvitationByTicket(op.param1,Ticket)
                         ki.acceptGroupInvitationByTicket(op.param1,Ticket)
                         ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
                         G.preventJoinByTicket = True
                         ki2.updateGroup(G)
                     else:
@@ -3103,522 +2393,8 @@ def bot(op):
                         cl.acceptGroupInvitationByTicket(op.param1,Ticket)
                         ki.acceptGroupInvitationByTicket(op.param1,Ticket)
                         ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
                         G.preventJoinByTicket = True
                         ki2.updateGroup(G)
-                        
-                elif op.param3 in ki2mid:
-                    if op.param2 in ki3mid:
-                        G = ki3.getGroup(op.param1)
-                        G.preventJoinByTicket = False
-                        ki3.updateGroup(G)
-                        Ticket = ki3.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        ki3.updateGroup(G)
-                    else:
-                        G = cl.getGroup(op.param1)
-
-                        
-                        ki3.kickoutFromGroup(op.param1,[op.param2])
-
-                        G.preventJoinByTicket = False
-                        ki3.updateGroup(G)
-                        Ticket = ki3.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        ki3.updateGroup(G)
-                        
-                elif op.param3 in ki4mid:
-                    if op.param2 in ki5mid:
-                        G = ki5.getGroup(op.param1)
-                        G.preventJoinByTicket = False
-                        ki5.updateGroup(G)
-                        Ticket = ki5.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        cl.updateGroup(G)
-                    else:
-                        G = ki5.getGroup(op.param1)
-
-                        
-                        ki5.kickoutFromGroup(op.param1,[op.param2])
-
-                        G.preventJoinByTicket = False
-                        ki5.updateGroup(G)
-                        Ticket = ki5.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        ki5.updateGroup(G)
-
-                elif op.param3 in ki5mid:
-                    if op.param2 in ki4mid:
-                        G = ki4.getGroup(op.param1)
-                        G.preventJoinByTicket = False
-                        ki4.updateGroup(G)
-                        Ticket = ki4.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        ki4.updateGroup(G)
-                    else:
-                        G = ki4.getGroup(op.param1)
-
-                        
-                        ki4.kickoutFromGroup(op.param1,[op.param2])
-
-                        G.preventJoinByTicket = False
-                        ki4.updateGroup(G)
-                        Ticket = ki4.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        ki4.updateGroup(G)
-
-                elif op.param3 in k1mid:
-                    if op.param2 in ki5mid:
-                        G = ki5.getGroup(op.param1)
-                        G.preventJoinByTicket = False
-                        ki5.updateGroup(G)
-                        Ticket = ki5.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        ki5.updateGroup(G)
-                    else:
-                        G = ki5.getGroup(op.param1)
-
-                        
-                        ki5.kickoutFromGroup(op.param1,[op.param2])
-
-                        G.preventJoinByTicket = False
-                        ki5.updateGroup(G)
-                        Ticket = ki5.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        ki5.updateGroup(G)
-
-                elif op.param3 in ki5mid:
-                    if op.param2 in k1mid:
-                        G = k1.getGroup(op.param1)
-                        G.preventJoinByTicket = False
-                        k1.updateGroup(G)
-                        Ticket = k1.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        k1.updateGroup(G)
-                    else:
-                        G = k1.getGroup(op.param1)
-
-                        
-                        k1.kickoutFromGroup(op.param1,[op.param2])
-
-                        G.preventJoinByTicket = False
-                        k1.updateGroup(G)
-                        Ticket = k1.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        k1.updateGroup(G)
-
-                elif op.param3 in k1mid:
-                    if op.param2 in k2mid:
-                        G = k2.getGroup(op.param1)
-                        G.preventJoinByTicket = False
-                        k2.updateGroup(G)
-                        Ticket = k2.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        k2.updateGroup(G)
-                    else:
-                        G = k2.getGroup(op.param1)
-
-                        
-                        k2.kickoutFromGroup(op.param1,[op.param2])
-
-                        G.preventJoinByTicket = False
-                        k2.updateGroup(G)
-                        Ticket = k2.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        k2.updateGroup(G)
-
-                elif op.param3 in k3mid:
-                    if op.param2 in k2mid:
-                        G = k2.getGroup(op.param1)
-                        G.preventJoinByTicket = False
-                        k2.updateGroup(G)
-                        Ticket = k2.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        k2.updateGroup(G)
-                    else:
-                        G = k2.getGroup(op.param1)
-
-                        
-                        k2.kickoutFromGroup(op.param1,[op.param2])
-
-                        G.preventJoinByTicket = False
-                        k2.updateGroup(G)
-                        Ticket = k2.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        k2.updateGroup(G)
-
-                elif op.param3 in k4mid:
-                    if op.param2 in k3mid:
-                        G = k3.getGroup(op.param1)
-                        G.preventJoinByTicket = False
-                        k3.updateGroup(G)
-                        Ticket = k3.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        k3.updateGroup(G)
-                    else:
-                        G = k3.getGroup(op.param1)
-
-                        
-                        k3.kickoutFromGroup(op.param1,[op.param2])
-
-                        G.preventJoinByTicket = False
-                        k3.updateGroup(G)
-                        Ticket = k3.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        k3.updateGroup(G)
-
-                elif op.param3 in k3mid:
-                    if op.param2 in k4mid:
-                        G = k4.getGroup(op.param1)
-                        G.preventJoinByTicket = False
-                        k4.updateGroup(G)
-                        Ticket = k4.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        k4.updateGroup(G)
-                    else:
-                        G = k4.getGroup(op.param1)
-
-                        
-                        k4.kickoutFromGroup(op.param1,[op.param2])
-
-                        G.preventJoinByTicket = False
-                        k4.updateGroup(G)
-                        Ticket = k4.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        k4.updateGroup(G)
-
-                elif op.param3 in k5mid:
-                    if op.param2 in k4mid:
-                        G = k4.getGroup(op.param1)
-                        G.preventJoinByTicket = False
-                        k4.updateGroup(G)
-                        Ticket = k4.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        k4.updateGroup(G)
-                    else:
-                        G = k4.getGroup(op.param1)
-
-                        
-                        k4.kickoutFromGroup(op.param1,[op.param2])
-
-                        G.preventJoinByTicket = False
-                        k4.updateGroup(G)
-                        Ticket = k4.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        k4.updateGroup(G)
-
-                elif op.param3 in k4mid:
-                    if op.param2 in k5mid:
-                        G = k5.getGroup(op.param1)
-                        G.preventJoinByTicket = False
-                        k5.updateGroup(G)
-                        Ticket = k5.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        k5.updateGroup(G)
-                    else:
-                        G = k5.getGroup(op.param1)
-
-                        
-                        k5.kickoutFromGroup(op.param1,[op.param2])
-
-                        G.preventJoinByTicket = False
-                        k5.updateGroup(G)
-                        Ticket = k5.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        k5.updateGroup(G)
-
-                elif op.param3 in k5mid:
-                    if op.param2 in kimid:
-                        G = ki.getGroup(op.param1)
-                        G.preventJoinByTicket = False
-                        ki.updateGroup(G)
-                        Ticket = ki.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        ki.updateGroup(G)
-                    else:
-                        G = ki.getGroup(op.param1)
-
-                        
-                        ki.kickoutFromGroup(op.param1,[op.param2])
-
-                        G.preventJoinByTicket = False
-                        ki.updateGroup(G)
-                        Ticket = ki.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        ki.updateGroup(G)
-            except:
-                pass
 
 	if op.type == 17:
 	    if op.param2 not in Bots:
@@ -3630,7 +2406,7 @@ def bot(op):
 			random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
 			G = random.choice(KAC).getGroup(op.param1)
 			G.preventJoinByTicket = True
-			ki4.updateGroup(G)
+			ki.updateGroup(G)
 #			random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
 		   except:
 #			pass
@@ -3780,14 +2556,6 @@ def autolike():
                    cl.like(posts["userInfo"]["writerMid"], posts["postInfo"]["postId"], 1001)
                    ki.like(posts["userInfo"]["writerMid"], posts["postInfo"]["postId"], 1001)
                    ki2.like(posts["userInfo"]["writerMid"], posts["postInfo"]["postId"], 1001)
-                   ki3.like(posts["userInfo"]["writerMid"], posts["postInfo"]["postId"], 1001)
-                   ki4.like(posts["userInfo"]["writerMid"], posts["postInfo"]["postId"], 1001)
-                   ki5.like(posts["userInfo"]["writerMid"], posts["postInfo"]["postId"], 1001)
-                   k1.like(posts["userInfo"]["writerMid"], posts["postInfo"]["postId"], 1001)
-                   k2.like(posts["userInfo"]["writerMid"], posts["postInfo"]["postId"], 1001)
-                   k3.like(posts["userInfo"]["writerMid"], posts["postInfo"]["postId"], 1001)
-                   k4.like(posts["userInfo"]["writerMid"], posts["postInfo"]["postId"], 1001)
-                   k5.like(posts["userInfo"]["writerMid"], posts["postInfo"]["postId"], 1001)
                    print "Like"
                    if wait["commentOn"] == True:
                       if posts["userInfo"]["writerMid"] in wait["commentBlack"]:
@@ -3796,14 +2564,6 @@ def autolike():
                           cl.comment(posts["userInfo"]["writerMid"],posts["postInfo"]["postId"],wait["comment"])
                           ki.comment(posts["userInfo"]["writerMid"],posts["postInfo"]["postId"],wait["comment"])
                           ki2.comment(posts["userInfo"]["writerMid"],posts["postInfo"]["postId"],wait["comment"])
-                          ki3.comment(posts["userInfo"]["writerMid"],posts["postInfo"]["postId"],wait["comment"])
-                          ki4.comment(posts["userInfo"]["writerMid"],posts["postInfo"]["postId"],wait["comment"])
-                          ki5.comment(posts["userInfo"]["writerMid"],posts["postInfo"]["postId"],wait["comment"])
-                          k1.comment(posts["userInfo"]["writerMid"],posts["postInfo"]["postId"],wait["comment"])
-                          k2.comment(posts["userInfo"]["writerMid"],posts["postInfo"]["postId"],wait["comment"])
-                          k3.comment(posts["userInfo"]["writerMid"],posts["postInfo"]["postId"],wait["comment"])
-                          k4.comment(posts["userInfo"]["writerMid"],posts["postInfo"]["postId"],wait["comment"])
-                          k5.comment(posts["userInfo"]["writerMid"],posts["postInfo"]["postId"],wait["comment"])
         except:
             count += 1
             if(count == 50):
@@ -3823,14 +2583,6 @@ thread2.start()
 #            ki.comment(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],"Auto Like by MuhMursalinD\n\nHttp://line.me/ti/p/~muhmursalind")
 #            ki2.like(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],likeType=1002)
 #            ki2.comment(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],"Auto Like by MuhMursalinD\n\nHttp://line.me/ti/p/~muhmursalind")
-#            ki3.like(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],likeType=1002)
-#            ki3.comment(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],"Auto Like by MuhMursalinD\n\nHttp://line.me/ti/p/~muhmursalind")
-#            ki4.like(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],likeType=1002)
-#            ki4.comment(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],"Auto Like by MuhMursalinD\n\nHttp://line.me/ti/p/~muhmursalind")
-#            ki5.like(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],likeType=1002)
-#            ki5.comment(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],"Auto Like by MuhMursalinD\n\nHttp://line.me/ti/p/~muhmursalind")
-#            ki6.like(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],likeType=1002)
-#            ki6.comment(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],"Auto Like by MuhMursalinD\n\nHttp://line.me/ti/p/~muhmursalind")
 #            print "Like"
 #            print "Like"
 #            print "Like"
