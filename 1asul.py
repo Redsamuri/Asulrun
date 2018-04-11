@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import LINETCR
-from LINETCR.lib.curve.ttypes import *
+import ASUL
+from ASUL.lib.curve.ttypes import *
 from datetime import datetime
 from bs4 import BeautifulSoup
 from urllib import urlopen
@@ -13,17 +13,17 @@ from gtts import gTTS
 from googletrans import Translator
 import time,random,sys,json,codecs,threading,glob,requests,urllib
 
-cl = LINETCR.LINE()
+cl = ASUL.LINE()
 cl.login(token=qr().get())
 cl.loginResult()
 
 
-ki = LINETCR.LINE()
+ki = ASUL.LINE()
 ki.login(token=qr().get())
 ki.loginResult()
 
 
-ki2 = LINETCR.LINE()
+ki2 = ASUL.LINE()
 ki2.login(token=qr().get())
 ki2.loginResult()
 
@@ -63,10 +63,9 @@ helpMessage ="""||=====  F O R   U S E R  =====||
 ||✒️✒ Inviteme:     - Via Gid
 ||✒️✒ Info grup
 ||✒️✒ Clear grup
-||✒️✒️ Reject    - ลบรัน
-||✒️✒️ Aslogin   - ขอลิ้งล็อคอินasul
-||✒️✒️ .         - เช็คสถานะล็อคอิน asul
-||✒️✒️ Reject1   - ลบรัน asul
+||✒️✒️ Reject    - ลบรันเซล
+||✒️✒️ Reject1  - ลบรันคิก1
+||✒️✒️ Reject2  - ลบรันคิก2
 ||===== F O R  K I C K E R =====||
 ||✒️✒ Nuke
 ||✒️✒ Ratakan
@@ -91,6 +90,7 @@ helpMessage ="""||=====  F O R   U S E R  =====||
 
 
 ||===== S E T T I G S =====||          
+|| [Sambutan on/off]
 || [Like:on/off]     
 || [Add on/off] 	 
 || [Join on/off] 	   
@@ -122,8 +122,8 @@ helpMessage ="""||=====  F O R   U S E R  =====||
 ||✒️ คิกเกอร์  - เชคคท.คิกเกอร์ทั้งหมด
 ||✒️ คิกมา  - เรียกคิกเกอร์เข้ากลุ่ม
 ||✒️ คิกออก  - สั่งคิกเกอร์ออกกลุ่ม
-||✒️ 1-10 in  - เรียกคิกเกอร์
-||✒️ 1-10 bye. - สั่งคิกเกอร์ออก
+||✒️ 1-2 in  - เรียกคิกเกอร์
+||✒️ 1-2 bye. - สั่งคิกเกอร์ออก
 ||✒️ แทค  - แทคสมาชิก
 ||✒️ จุด   - ตั้งจุดเชคคนอ่าน
 ||✒️ อ่าน  - เชครายชื่อคนอ่าน
@@ -142,10 +142,10 @@ helpMessage ="""||=====  F O R   U S E R  =====||
 ||✒️ ลิ้ง  - เปิดและขอลิ้งกลุ่ม
 ||✒️ Gname:  - เปลี่ยนชื่อกลุ่ม
 ||✒️ รัน @  - รันกลุ่ม
+||✒️ รันแชท @  - รันแชทสต
 ||✒️ ลบรัน  - ลบรันตัวเอง
-||✒️ ลบรัน1 - ลบรันให้เพื่อน(ขอลิ้งให้ลอคอินก่อน)
-||✒️ ขอลิ้ง  - ขอลิ้งให้เพื่อนลอคอิน
-||✒️ .  - เชคสถานะลอคอิน
+||✒️ ลบรัน1 - ลบรันให้คิก1
+||✒️ ลบรัน2 - ลบรันให้คิก2
 ||✒️ Sp  - เชคสปีด
 ||✒️ Bot sp  - เชคสปีดคิกเกอร์
 ||✒️ Mycopy @  - กอพปี้โปรไฟล์
@@ -196,11 +196,12 @@ admin = [mid]
 
 wait = {
     'contact':False,
-    'autoJoin':True,
-    'autoCancel':{"on":False,"members":50},
+    'Sambutan':True,
+    'autoJoin':False,
+    'autoCancel':{"on":True,"members":50},
     'leaveRoom':True,
     'timeline':False,
-    'autoAdd':True,
+    'autoAdd':False,
     'message':"selt bot by\n┅═हवतेु১तेั७ழণ১ह═ \nhttp://line.me/ti/p/~samuri5",
     "lang":"JP",
     "comment":"Auto Like By \n┅═ह वतेु১तेั७ழণ১ह═┅",
@@ -214,7 +215,7 @@ wait = {
     "blacklist":{},
     "wblacklist":False,
     "dblacklist":False,
-    "protect":True,
+    "protect":False,
     "cancelprotect":False,
     "inviteprotect":False,
     "linkprotect":False,
@@ -339,7 +340,7 @@ def bot(op):
             msg = op.message
             if msg.toType == 0:
                 msg.to = msg.from_
-                if msg.from_ == mid:
+                if msg.from_ == admin:
                     if "join:" in msg.text:
                         list_ = msg.text.split(":")
                         try:
@@ -352,25 +353,67 @@ def bot(op):
             if msg.toType == 1:
                 if wait["leaveRoom"] == True:
                     cl.leaveRoom(msg.to)
-#------------------ NOTIFED MEMBER OUT GROUP
-        if op.type == 15:
-            if op.param2 in bot1:
-                return
-            cl.sendText(op.param1,"ไปซะละ ลาก่อย\n(*´･ω･*)\nSelfbot by\nRedsamuri")
-            print "MEMBER HAS LEFT THE GROUP"
-#------------------ KICK OUT FORM GROUP
-        if op.type == 19:
-            if op.param2 in Bots:
-                return
-            cl.sendText(op.param1,cl.getContact(op.param2).displayName + " ซัดเต็มข้อเลยครับ ท่านผู้ชม")
-            print "MEMBER KICK OUT FORM GROUP"
-# ----------------- NOTIFED MEMBER JOIN GROUP
+#------------------ NOTIFED MEMBER JOIN GROUP
         if op.type == 17:
-            if op.param2 in bot1:
+          if wait["Sambutan"] == True:
+            if op.param2 in admin:
                 return
             ginfo = cl.getGroup(op.param1)
-            cl.sendText(op.param1, "Welcome  😊" + cl.getContact(op.param2).displayName + " ยินดีต้อนรับสู่กลุ่ม " + "👉" + str(ginfo.name) + "👈" + " นาคร๊าฟ 😘🙏😍")
-            print "MEMBER HAS JOIN THE GROUP"
+            contact = cl.getContact(op.param2)
+            image = "http://dl.profile.line-cdn.net/" + contact.pictureStatus
+            cl.sendText(op.param1,"สวัสดี " + red.getContact(op.param2).displayName + "\nยินดีต้อนรับเข้าสู่กลุ่ม ☞ " + str(ginfo.name) + " ☜" + "\nเข้ามาแล้วอย่าลืมดูที่โน๊ตกลุ่มด้วยนะ\nอย่าลืมปิดเสียงแจ้งเตือนด้วยล่ะ ^_^")
+            c = Message(to=op.param1, from_=None, text=None, contentType=13)
+            c.contentMetadata={'mid':op.param2}
+            cl.sendMessage(c)  
+            cl.sendImageWithURL(op.param1,image)
+            d = Message(to=op.param1, from_=None, text=None, contentType=7)
+            d.contentMetadata={
+                                    "STKID": "410",
+                                     "STKPKGID": "1",
+                                     "STKVER": "100" }                
+            red.sendMessage(d)             
+            print "MEMBER JOIN TO GROUP"
+            
+        if op.type == 19:
+          if wait["Sambutan"] == True:
+            if op.param2 in Bots:
+                return
+            ginfo = cl.getGroup(op.param1)
+            contact = cl.getContact(op.param2)
+            image = "http://dl.profile.line-cdn.net/" + contact.pictureStatus
+            cl.sendText(op.param1,cl.getContact(op.param2).displayName + " มึงแกล้งน้องเค้าอีกแระบักปอบ")
+            c = Message(to=op.param1, from_=None, text=None, contentType=13)
+            c.contentMetadata={'mid':op.param2}
+            red.sendMessage(c)  
+            cl.sendImageWithURL(op.param1,image)
+            d = Message(to=op.param1, from_=None, text=None, contentType=7)
+            d.contentMetadata={
+                                    "STKID": "518",
+                                     "STKPKGID": "2",
+                                     "STKVER": "100" }                
+            cl.sendMessage(d)
+            print "MEMBER KICK OUT FORM GROUP"
+
+        if op.type == 15:
+          if wait["Sambutan"] == True:
+            if op.param2 in admin:
+                return
+            ginfo = cl.getGroup(op.param1)
+            contact = cl.getContact(op.param2)
+            image = "http://dl.profile.line-cdn.net/" + contact.pictureStatus
+            cl.sendText(op.param1,"Goodbye.. " + red.getContact(op.param2).displayName +  "\nแล้วเจอกันใหม่นะ. . . (p′︵‵。) 🤗")
+            c = Message(to=op.param1, from_=None, text=None, contentType=13)
+            c.contentMetadata={'mid':op.param2}
+            cl.sendMessage(c)  
+            cl.sendImageWithURL(op.param1,image)
+            d = Message(to=op.param1, from_=None, text=None, contentType=7)
+            d.contentMetadata={
+                                    "STKID": "428",
+                                    "STKPKGID": "1",
+                                    "STKVER": "100" }                
+            cl.sendMessage(d)                  
+            print "MEMBER HAS LEFT THE GROUP"
+
             if msg.contentType == 16:
                 url = msg.contentMetadata["postEndUrl"]
                 cl.like(url[25:58], url[66:], likeType=1001)
@@ -570,6 +613,23 @@ def bot(op):
                 msg.contentType = 13
                 msg.contentMetadata = {"mid":mmid}
                 cl.sendMessage(msg)
+            elif msg.text in ["Sambutan on"]:
+                if wait["Sambutan"] == True:
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to,"Sambutan Di Aktifkanヾ(*´∀｀*)ﾉ")
+                else:
+                    wait["Sambutan"] = True
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to,"Sudah Onヽ(´▽｀)/")
+
+            elif msg.text in ["Sambutan off"]:
+                if wait["Sambutan"] == False:
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to,"Sambutan Di Nonaktifkan(　＾∇＾)")
+                else:
+                    wait["Sambutan"] = False
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to,"Sudah Off(p′︵‵。)")
             elif msg.text in ["Contact on","เปิดคท."]:
                 if wait["contact"] == True:
                     if wait["lang"] == "JP":
@@ -893,6 +953,8 @@ def bot(op):
                 else:md+="☞ Cancel Protect → ❌\n"
                 if wait["likeOn"] == True: md+="☞ Auto like → ✔\n"
                 else:md+="☞ Auto like → ❌\n" 
+                if wait["Samutan"] == True: md+="☞ Sambotan on→ ✔\n"
+                else:md+="☞ Sambutan off→ ❌\n" 
                 cl.sendText(msg.to,md)
                 msg.contentType = 13
                 msg.contentMetadata = {'mid': admsa}
@@ -924,6 +986,8 @@ def bot(op):
                 else:md+="☞ ป้องกันยกเชิญ → ❌\n"
                 if wait["likeOn"] == True: md+="☞ ไลค์ออโต้ → ✔\n"
                 else:md+="☞ ไลค์ออโต้ → ❌\n" 
+                if wait["Samutan"] == True: md+="☞ ข้อความคนเข้าคนออกคนลบ เปิด → ✔\n"
+                else:md+="☞ ข้อความคนเข้าคนออกคนลบ ปิด → ❌\n" 
                 cl.sendText(msg.to,md)
                 msg.contentType = 13
                 msg.contentMetadata = {'mid': admsa}
@@ -1196,13 +1260,21 @@ def bot(op):
                 else:
                     cl.sendText(msg.to,"key is wrong")
             elif msg.text in ["Reject1","ลบรัน1"]:
-                gid = ki6.getGroupIdsInvited()
+                gid = ki.getGroupIdsInvited()
                 for i in gid:
-                    ki6.rejectGroupInvitation(i)
+                    ki.rejectGroupInvitation(i)
                 if wait["lang"] == "JP":
-                    ki6.sendText(msg.to,"ปฏิเสทค้างเชิญเรียบร้อย")
+                    ki.sendText(msg.to,"ปฏิเสทค้างเชิญเรียบร้อย")
                 else:
-                    ki6.sendText(msg.to,"key is wrong")
+                    ki.sendText(msg.to,"key is wrong")
+            elif msg.text in ["Reject2","ลบรัน2"]:
+                gid = ki2.getGroupIdsInvited()
+                for i in gid:
+                    ki2.rejectGroupInvitation(i)
+                if wait["lang"] == "JP":
+                    ki2.sendText(msg.to,"ปฏิเสทค้างเชิญเรียบร้อย")
+                else:
+                    ki2.sendText(msg.to,"key is wrong")
 #-----------------------------------------------------------
             elif msg.text in ["Aslogin","ขอลิ้ง"]:
                     if not AsulLogged:
@@ -1635,7 +1707,7 @@ def bot(op):
                         try:
                            thisgroup = cl.getGroups([msg.to])
                            Mids = [target for contact in thisgroup[0].members]
-                           mi_d = Mids[:33]
+                           mi_d = Mids[:1001]
                            cl.createGroup("RED SAMURI Group",mi_d)
                            ki.createGroup("RED SAMURI Group",mi_d)
                            ki2.createGroup("RED SAMURI Group",mi_d)
@@ -1647,20 +1719,8 @@ def bot(op):
                            ki2.createGroup("RED SAMURI Group",mi_d)
                            cl.createGroup("RED SAMURI Group",mi_d)
                            ki.createGroup("RED SAMURI Groupp",mi_d)
-			   ki2.createGroup("RED SAMURI Groupp",mi_d)
-			   cl.createGroup("RED SAMURI Group",mi_d)
-                           ki.createGroup("RED SAMURI Group",mi_d)
-                           ki2.createGroup("RED SAMURI Group",mi_d)
+                           ki2.createGroup("RED SAMURI Groupp",mi_d)
                            cl.createGroup("RED SAMURI Group",mi_d)
-                           ki.createGroup("RED SAMURI Group",mi_d)
-                           ki2.createGroup("RED SAMURI Group",mi_d)
-                           cl.createGroup("RED SAMURI Group",mi_d)
-                           ki.createGroup("RED SAMURI Group",mi_d)
-                           ki2.createGroup("RED SAMURI Group",mi_d)
-                           cl.createGroup("RED SAMURI Group",mi_d)
-                           ki.createGroup("RED SAMURI Groupp",mi_d)
-			   ki2.createGroup("RED SAMURI Groupp",mi_d)
-			   cl.createGroup("RED SAMURI Group",mi_d)
                            ki.createGroup("RED SAMURI Group",mi_d)
                            ki2.createGroup("RED SAMURI Group",mi_d)
                            cl.createGroup("RED SAMURI Group",mi_d)
@@ -1671,7 +1731,19 @@ def bot(op):
                            ki2.createGroup("RED SAMURI Group",mi_d)
                            cl.createGroup("RED SAMURI Group",mi_d)
                            ki.createGroup("RED SAMURI Groupp",mi_d)
-			   ki2.createGroup("RED SAMURI Groupp",mi_d)
+                           ki2.createGroup("RED SAMURI Groupp",mi_d)
+                           cl.createGroup("RED SAMURI Group",mi_d)
+                           ki.createGroup("RED SAMURI Group",mi_d)
+                           ki2.createGroup("RED SAMURI Group",mi_d)
+                           cl.createGroup("RED SAMURI Group",mi_d)
+                           ki.createGroup("RED SAMURI Group",mi_d)
+                           ki2.createGroup("RED SAMURI Group",mi_d)
+                           cl.createGroup("RED SAMURI Group",mi_d)
+                           ki.createGroup("RED SAMURI Group",mi_d)
+                           ki2.createGroup("RED SAMURI Group",mi_d)
+                           cl.createGroup("RED SAMURI Group",mi_d)
+                           ki.createGroup("RED SAMURI Groupp",mi_d)
+                           ki2.createGroup("RED SAMURI Groupp",mi_d)
                            cl.sendText(msg.to,"เรียบร้อย")
                         except:
                             pass
@@ -2312,189 +2384,6 @@ def bot(op):
                 cl.sendText(msg.to,"Selamat Datang Di Grup " + str(ginfo.name))
                 cl.sendText(msg.to,"Owner Grup " + str(ginfo.name) + " :\n" + ginfo.creator.displayName )
 #----------------------------------------------- 
-#-----------------------------------------------
-        if op.type == 19:
-            try:
-                if op.param3 in mid:
-                    if op.param2 in kimid:
-                        G = ki.getGroup(op.param1)
-                        G.preventJoinByTicket = False
-                        ki.updateGroup(G)
-                        Ticket = ki.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        cl.updateGroup(G)
-                    else:
-                        G = ki.getGroup(op.param1)
-                        
-                        ki.kickoutFromGroup(op.param1,[op.param2])
-
-                        G.preventJoinByTicket = False
-                        ki.updateGroup(G)
-                        Ticket = ki.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        cl.updateGroup(G)
-                        ki.updateGroup(G)
-                        wait["blacklist"][op.param2] = True
-
-                       
-                        
-                elif op.param3 in kimid:
-                    if op.param2 in ki2mid:
-                        G = ki2.getGroup(op.param1)
-                        G.preventJoinByTicket = False
-                        ki2.updateGroup(G)
-                        Ticket = ki2.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        ki2.updateGroup(G)
-                    else:
-                        G = ki2.getGroup(op.param1)
-
-                        ki2.kickoutFromGroup(op.param1,[op.param2])
-
-                        G.preventJoinByTicket = False
-                        ki2.updateGroup(G)
-                        Ticket = ki2.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        ki.updateGroup(G)
-
-
-                elif op.param3 in ki3mid:
-                    if op.param2 in ki2mid:
-                        G = ki2.getGroup(op.param1)
-                        G.preventJoinByTicket = False
-                        ki2.updateGroup(G)
-                        Ticket = ki2.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        ki2.updateGroup(G)
-                    else:
-                        G = cl.getGroup(op.param1)
-
-                        
-                        ki2.kickoutFromGroup(op.param1,[op.param2])
-
-                        G.preventJoinByTicket = False
-                        ki2.updateGroup(G)
-                        Ticket = ki2.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        ki2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        ki2.updateGroup(G)
-
-	if op.type == 17:
-	    if op.param2 not in Bots:
-		if op.param2 in Bots:
-		    pass
-	    if wait["protect"] == True:
-		if wait["blacklist"][op.param2] == True:
-		   try:
-			random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
-			G = random.choice(KAC).getGroup(op.param1)
-			G.preventJoinByTicket = True
-			ki.updateGroup(G)
-#			random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
-		   except:
-#			pass
-			try:
-			    random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
-			    G = random.choice(KAC).getGroup(op.param1)
-			    G.preventJoinByTicket = True
-			    random.choice(KAC).updateGroup(G)
-#			    random.choice(KAK).kickoutFromGroup(op.param1,[op.param2])
-			except:
-			    pass
-		elif op.param2 not in admin + Bots:
-		    random.choice(KAC).sendText(op.param1,"Welcome. Don't Play Bots. I can kick you!")
-	    else:
-		pass
-	if op.type == 19:
-	    if op.param2 not in Bots:
-		if op.param2 in Bots:
-		    pass
-		elif wait["protect"] == True:
-		    wait ["blacklist"][op.param2] = True
-		    random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
-		else:
-		    cl.sendText(op.param1,"")
-	    else:
-		cl.sendText(op.param1,"")
-	if op.type == 13:
-	    if op.param2 not in Bots:
-		if op.param2 in Bots:
-		    pass
-		elif wait["inviteprotect"] == True:
-		    wait ["blacklist"][op.param2] = True
-		    random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
-		else:
-		    cl.sendText(op.param1,"")
-	    else:
-		cl.sendText(op.param1,"")
-	    if op.param2 not in Bots:
-		if op.param2 in Bots:
-		    pass
-		elif wait["inviteprotect"] == True:
-		    wait ["blacklist"][op.param2] = True
-		    cl.cancelGroupInvitation(op.param1,[op.param3])
-		else:
-		    cl.sendText(op.param1,"")
-	    else:
-		cl.sendText(op.param1,"")
-	    if op.param2 not in Bots:
-		if op.param2 in Bots:
-		    pass
-		elif wait["cancelprotect"] == True:
-		    wait ["blacklist"][op.param2] = True
-		    cl.cancelGroupInvitation(op.param1,[op.param3])
-		else:
-		    cl.sendText(op.param1,"")
-	    else:
-		cl.sendText(op.param1,"")
-	if op.type == 11:
-	    if op.param2 not in Bots:
-		if op.param2 in Bots:
-		    pass
-		elif wait["linkprotect"] == True:
-		    wait ["blacklist"][op.param2] = True
-		    G = ki.getGroup(op.param1)
-		    G.preventJoinByTicket = True
-		    ki.updateGroup(G)
-		    random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
-		else:
-		    cl.sendText(op.param1,"")
-	    else:
-		cl.sendText(op.param1,"")
-        if op.type == 5:
-            if wait["autoAdd"] == True:
-                if (wait["message"] in [""," ","\n",None]):
-                    pass
-                else:
-                    cl.sendText(op.param1,str(wait["message"]))
-                    
-#------Open QR Kick start------#
-        if op.type == 11:
-            if wait["linkprotect"] == True:
-                if op.param2 not in Bots:
-                    G = random.choice(KAC).getGroup(op.param1)
-                    G.preventJoinByTicket = True
-                    random.choice(KAC).kickoutFromGroup(op.param1,[op.param3])
-                    random.choice(KAC).updateGroup(G)
-        #------Open QR Kick finish-----#
-#------------------------------------------------------------------------------------
 
 #------------------------------------------------------------------------------------
         if op.type == 55:
