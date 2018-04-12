@@ -269,6 +269,111 @@ def mention(to,nama):
     except Exception as error:
         print error
 	
+def download_page(url):
+    version = (3,0)
+    cur_version = sys.version_info
+    if cur_version >= version:     
+        import urllib,request    
+        try:
+            headers = {}
+            headers['User-Agent'] = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
+            req = urllib,request.Request(url, headers = headers)
+            resp = urllib,request.urlopen(req)
+            respData = str(resp.read())
+            return respData
+        except Exception as e:
+            print(str(e))
+    else:                        
+        import urllib2
+        try:
+            headers = {}
+            headers['User-Agent'] = "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.27 Safari/537.17"
+            req = urllib2.Request(url, headers = headers)
+            response = urllib2.urlopen(req)
+            page = response.read()
+            return page
+        except:
+            return"Page Not found"
+
+
+def _images_get_next_item(s):
+    start_line = s.find('rg_di')
+    if start_line == -1:    
+        end_quote = 0
+        link = "no_links"
+        return link, end_quote
+    else:
+        start_line = s.find('"class="rg_meta"')
+        start_content = s.find('"ou"',start_line+90)
+        end_content = s.find(',"ow"',start_content-90)
+        content_raw = str(s[start_content+6:end_content-1])
+        return content_raw, end_content
+
+
+def _images_get_all_items(page):
+    items = []
+    while True:
+        item, end_content = _images_get_next_item(page)
+        if item == "no_links":
+            break
+        else:
+            items.append(item)      
+            time.sleep(0.1)        
+            page = page[end_content:]
+    return items
+    
+def waktu(secs):
+    mins, secs = divmod(secs,60)
+    hours, mins = divmod(mins,60)
+    return '%02d Jam %02d Menit %02d Detik' % (hours, mins, secs)      
+    
+def cms(string, commands): #/XXX, >XXX, ;XXX, ^XXX, %XXX, $XXX...
+    tex = ["+","@","/",">",";","^","%","$","＾","サテラ:","サテラ:","サテラ：","サテラ："]
+    for texX in tex:
+        for command in commands:
+            if string ==command:
+                return True
+    return False    
+
+def upload_tempimage(client):
+     '''
+         Upload a picture of a kitten. We don't ship one, so get creative!
+     '''
+     config = {
+         'album': album,
+         'name':  'bot auto upload',
+         'title': 'bot auto upload',
+         'description': 'bot auto upload'
+     }
+
+     print("Uploading image... ")
+     image = client.upload_from_path(image_path, config=config, anon=False)
+     print("Done")
+     print()
+
+     return image
+     
+def sendAudio(self, to_, path):
+       M = Message()
+       M.text = None
+       M.to = to_
+       M.contentMetadata = None
+       M.contentPreview = None
+       M.contentType = 3
+       M_id = self._client.sendMessage(0,M).id
+       files = {
+             'file': open(path,  'rb'),
+       }
+    
+def sendMessage(to, text, contentMetadata={}, contentType=0):
+    mes = Message()
+    mes.to, mes.from_ = to, profile.mid
+    mes.text = text
+    mes.contentType, mes.contentMetadata = contentType, contentMetadata
+    if to not in messageReq:
+        messageReq[to] = -1
+    messageReq[to] += 1
+	
 def sendImage(self, to_, path):
       M = Message(to=to_, text=None, contentType = 1)
       M.contentMetadata = None
@@ -970,7 +1075,7 @@ def bot(op):
                 else:md+="☞ Cancel Protect → ❌\n"
                 if wait["likeOn"] == True: md+="☞ Auto like → ✔\n"
                 else:md+="☞ Auto like → ❌\n" 
-                if wait["Samutan"] == True: md+="☞ Sambotan on→ ✔\n"
+                if wait["Sambutan"] == True: md+="☞ Sambutan on→ ✔\n"
                 else:md+="☞ Sambutan off→ ❌\n" 
                 cl.sendText(msg.to,md)
                 msg.contentType = 13
@@ -1003,8 +1108,8 @@ def bot(op):
                 else:md+="☞ ป้องกันยกเชิญ → ❌\n"
                 if wait["likeOn"] == True: md+="☞ ไลค์ออโต้ → ✔\n"
                 else:md+="☞ ไลค์ออโต้ → ❌\n" 
-                if wait["Samutan"] == True: md+="☞ ข้อความคนเข้าคนออกคนลบ เปิด → ✔\n"
-                else:md+="☞ ข้อความคนเข้าคนออกคนลบ ปิด → ❌\n" 
+                if wait["Sambutan"] == True: md+="☞ ข้อความคนเข้าคนออกคนลบ  → ✔\n"
+                else:md+="☞ ข้อความคนเข้าคนออกคนลบ  → ❌\n" 
                 cl.sendText(msg.to,md)
                 msg.contentType = 13
                 msg.contentMetadata = {'mid': admsa}
