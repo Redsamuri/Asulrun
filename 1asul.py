@@ -163,8 +163,8 @@ helo=""
 
 KAC=[cl]
 mid = cl.getProfile().mid
-kimid = ki.getProfile().mid
-ki2mid = ki2.getProfile().mid
+#kimid = ki.getProfile().mid
+#ki2mid = ki2.getProfile().mid
 Bots = [mid]
 bot1 = cl.getProfile().mid
 admsa = [mid]
@@ -178,17 +178,9 @@ wait = {
     'leaveRoom':False,
     'timeline':False,
     'autoAdd':False,
-    'message':"╠═════════════════════════
-║  🌾RED BOT LINE THAILAND🌾
-║    ─┅═✥👊ᵀᴴᴬᴵᴸᴬᴺᴰ👊✥═┅─
-║       💀[RED SAMURI BOT]💀
-╚═════════════════════════",
+    'message':"╠═════════════════════════║  🌾RED BOT LINE THAILAND🌾║    ─┅═✥👊ᵀᴴᴬᴵᴸᴬᴺᴰ👊✥═┅─║       💀[RED SAMURI BOT]💀╚═════════════════════════",
     "lang":"JP",
-    "comment":"╠═════════════════════════
-║  🌾RED BOT LINE THAILAND🌾
-║    ─┅═✥👊ᵀᴴᴬᴵᴸᴬᴺᴰ👊✥═┅─
-║       💀[RED SAMURI BOT]💀
-╚═════════════════════════",
+    "comment":"╠═════════════════════════║  🌾RED BOT LINE THAILAND🌾║    ─┅═✥👊ᵀᴴᴬᴵᴸᴬᴺᴰ👊✥═┅─║       💀[RED SAMURI BOT]💀╚═════════════════════════",
     "commentOn":False,
     "likeOn":False,
     "commentBlack":{},
@@ -235,11 +227,11 @@ mybackup.displayName = contact.displayName
 mybackup.statusMessage = contact.statusMessage
 mybackup.pictureStatus = contact.pictureStatus
 
-contact = ki.getProfile()
-backup = ki.getProfile()
-backup.displayName = contact.displayName
-backup.statusMessage = contact.statusMessage
-backup.pictureStatus = contact.pictureStatus
+#contact = ki.getProfile()
+#backup = ki.getProfile()
+#backup.displayName = contact.displayName
+#backup.statusMessage = contact.statusMessage
+#backup.pictureStatus = contact.pictureStatus
 
 user1 = mid
 user2 = ""
